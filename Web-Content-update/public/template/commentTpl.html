@@ -1,0 +1,43 @@
+<div class="comment" style="margin-bottom:50px;">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-10"><span>一共<strong>30</strong>条评论</span></div>
+        </div>
+        <div class="row" style="margin-top:30px;" ng-repeat="comment in commentList">
+            <a class="col-md-1" href="" ng-click="queryAuthorInfo(comment.userId)"><img class="img-usericon" src="../images/icon.jpg" /></a>
+            <div class="col-md-11">
+                <a href="" ng-model="article.username" ng-click="queryAuthorInfo(comment.userId)">{{comment.username}}</a>
+                <div>
+                    <span class="palette-paragraph">{{commment.commentTime}}</span>
+                </div>
+            </div>
+            <div>
+                <p>{{comment.content}}</p>
+            </div>
+            <blockquote>
+                <ul class="list-unstyled">
+                    <li ng-repeat="son in comment.sonList"><span><a href="" ng-click="">{{son.username}}</a>  回复：{{son.content}}</span>
+                    </li>
+                </ul>
+            </blockquote>
+            <div class="col-md-2 col-md-offset-10">
+                <a href="" ng-click="setShow(comment)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;添加新评论</a>
+            </div>
+            <div ng-show="comment.commented">
+                <textarea ng-model="comment.sonComment" rows="5" class="form-control" placeholder="写下你的评论..."></textarea>
+                <div class="col-md-1 col-md-offset-11" style="margin-top:10px;">
+                    <button class="btn btn-xs btn-success" ng-click="replyComment(comment)">评论</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="">
+
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <textarea name="writeComment" ng-model="content" id="" rows="5" class="form-control" placeholder="写下你的评论"></textarea>
+            <div class="col-md-1 col-md-offset-11" style="margin-top:10px;">
+                <button class="btn btn-xs btn-success" ng-click="commentForArticle()">评论</button>
+            </div>
+        </div>
+    </div>
+</div>

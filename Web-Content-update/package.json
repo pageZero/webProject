@@ -1,0 +1,21 @@
+{
+  "name": "qianduanjiangzuo",
+  "version": "1.0.0",
+  "description": "前端展示测试代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "connect-livereload": "^0.5.4",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-ruby-sass": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

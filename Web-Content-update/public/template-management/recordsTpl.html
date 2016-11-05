@@ -1,0 +1,45 @@
+﻿<!-- <div class="records">
+            <div class="col-md-10 col-md-offset-1">
+                <h2 class="page-header text-center" ">用户记录</h2>
+                
+            </div>
+    <div class="row">
+        <div class="col-md-1 col-md-offset-9 ">
+            <div class="dropdown">
+                <button class="btn btn-default" data-toggle="dropdown" type="button">
+                    功能列表 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu ">
+                    <li><a href="#/records" ng-click="getLoginRecords()">登录记录</a></li>
+                    <li><a href="" ng-click="getRegistRecords()">注册记录</a></li>
+                     <li class="divider "></li>
+                    <li><a href="" ng-click="getPublishRecords()">发布文章</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row ">
+        <div class="col-md-10 col-md-offset-1 table-responsive ">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th >{{th1}}</th>
+                        <th >{{th2}}</th>
+                        <th >{{th3}}</th>
+                        <th >{{th4}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in userRecords ">
+                        <td>&nbsp;{{user.id}}</td>
+                        <td>&nbsp;{{user.username}}</td>
+                        <td>&nbsp;{{user.regist_time}}</td>
+                        <td>&nbsp;{{user.last_login_in}}</td>
+                    </tr>
+                </tbody>  
+            </table>
+        </div>
+    </div>
+
+</div>

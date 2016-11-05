@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2 class="page-header text-center" ">专题分类管理</h2>
+        <div class="table-responsive ">
+            <table class="table table-hover">
+            	<thead>
+     				<tr>
+		            	<th >专题</th>
+		            	<th >描述</th>
+		            	<th >文章数量</th>
+		            	<th >操作</th>
+            		</tr>
+   				</thead>
+            	<tbody>
+            		<tr ng-repeat="class in classList">
+	                    <td >&nbsp;{{class.title}}</td>
+	                    <td>&nbsp;{{class.discribe}}</td>
+	                    <td>&nbsp;{{class.articlenum}}</td>
+	                    <td>
+	                 
+	                    <div class="btn-group btn-group-xs ">
+                      <button type="button " class="btn btn-default" ng-click="queryClass(class)">查看</button>
+  <button type="button " class="btn btn-warning" ng-click="modifyClass(class)">修改</button>
+  <button type="button " class="btn btn-danger " ng-click="delete(class)">删除</button>
+
+
+</div>
+	                    	</td>
+                	</tr>
+            	</tbody>
+                
+            </table>
+        </div>
+        
+    </div>
+</div>

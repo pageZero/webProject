@@ -1,0 +1,58 @@
+<script type="text/javascript">
+$(function() {
+    //为div设置边框
+    //$("#img-bg").css("border","1px solid gray");
+    //改变div的高度
+    $("#img-bg").height($(window).height());
+    //$("#class-des").width($(window).width());
+});
+</script>
+<div class="timeline" style="margin-top:40px">
+    <div class="row response">
+        <div class="col-md-4 navbar navbar-fixed-top responsive" id="img-bg" style="margin-top:60px; background:url(../images/bg.jpg);">
+            <div class=" col-md-offset-2">
+                <p class="responsive" style="word-break: break-all;
+  word-wrap: break-word;">关注了<strong>{{clazz.discribe}}位作者</strong></p>
+            </div>
+        </div>
+        <!--显示关注的作者的动态-->
+        <div class="col-md-8 col-md-offset-4">
+            <div class="row page-header" style="margin-top:20px;">
+                <ul class="list-inline">
+                    <li ng-click="getArticlesWithUserId()">
+                        <a href="">ta发布的文章</a>
+                    </li>
+                    <li ng-click="getCommentsWithUserId()"><a href="">ta发表的评论</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="row" ng-show="state" ng-repeat="article in publishArticles" style="margin-bottom:20px;">
+                    <a class="col-md-1" href="" ng-click="queryAuthorInfo(article.user.id)"><img class="img-usericon" src="../images/icon.jpg" /></a>
+                    <div class="col-md-11">
+                        <a href="" ng-click="queryAuthorInfo(article.user.id)">{{article.user.username}}</a> 发表了
+                        <a href="" ng-click="queryArticleInfo(article.articleId)">
+                            <<{{article.title}}>></a>
+                        <div>
+                            <span class="palette-paragraph">发布时间：{{article.creatTime}}</span>&nbsp;&nbsp;
+                            <span class="palette-paragraph">更新时间：{{article.updateTime}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-show="!state" ng-repeat="comment in publishComment" style="margin-bottom:20px;">
+                    <a class="col-md-1" href="" ng-click="queryAuthorInfo(comment.user.id)"><img class="img-usericon" src="../images/icon.jpg" /></a>
+                    <div class="col-md-11">
+                        <a href="" ng-click="queryAuthorInfo(comment.user.id)">{{comment.user.username}}</a> 回复了
+                        <a href="" ng-click="queryArticleInfo(comment.articleId)">
+                            <<{{comment.title}}>></a>
+                        <div>
+                            <span class="palette-paragraph">发布时间：{{comment.commentTime}}</span>
+                            <div>
+                                <p>“{{comment.content}}”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

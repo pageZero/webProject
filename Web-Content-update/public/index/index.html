@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=2000, initial-scale=1.0, maximum-scale=1.0">
+    <title>示例</title>
+    <link rel="stylesheet" href="../stylesheet/bootstrap.min.css">
+
+    <link href="../stylesheet/demo.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../stylesheet/flat-ui.css">
+    <link href="../stylesheet/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheet/editormd.css" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" /> 
+    <style type="text/css">
+    	.clear-float:after{
+    		clear: both;
+    		content: '';
+    		display: block;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="container main">
+        
+        <navbar> </navbar>
+        <!-- /navbar -->
+            
+        <div class="container">
+            <div ng-view>
+            
+            </div>
+        </div>
+    </div>
+    <script src="../js/vendor/jquery.min.js"></script>
+<!--编辑器-->   
+        <script src="../js/vendor/jquery.min.js"></script>
+        <script src="../js/editormd.js"></script>
+    <!--这3个是flat-ui的js-->
+   <script src="../js/flat-ui.min.js"></script>   
+    <!-- <script src="../js/application.js"></script>-->
+    <script src="../js/vendor/video.js"></script>
+    <!--  <script src="../js/bootstrap.min.js"></script>-->
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular.route.min.js"></script>
+
+    <script src="../js/my.js" charset="utf-8"></script>
+</body>
+
+</html>

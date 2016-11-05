@@ -1,0 +1,24 @@
+<script type="text/javascript">
+$(function() {
+    //为div设置边框
+    //$("#img-bg").css("border","1px solid gray");
+    //改变div的高度
+    $("#img-bg").height($(window).height());
+    //$("#class-des").width($(window).width());
+});
+</script>
+<div class="classInfo" style="margin-top:40px">
+    <div class="row response">
+        <div class="col-md-4 navbar navbar-fixed-top responsive" id="img-bg" style="margin-top:60px; background:url(../images/bg.jpg);">
+            <div class="text-center page-header">
+                <h4> {{clazz.title}}</h4>
+                <span class="text-center">共收录<strong>{{clazz.num}}</strong>篇文章</span>
+            </div>
+            <div class=" col-md-offset-2" >
+                <p class="responsive class-des" style="word-break: break-all;
+  word-wrap: break-word;">简介：{{clazz.discribe}}</p>
+            </div>
+        </div>
+        <list></list>
+    </div>
+</div>

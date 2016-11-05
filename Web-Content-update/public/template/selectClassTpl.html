@@ -1,0 +1,23 @@
+<div class="selectClass">
+	<p class="page-header text-center success">文章发布成功!!</p>
+	<p class="text-center" ng-model="article.title">{{article.title}}</p>
+	<div class="row demo-samples">
+        <div class="col-xs-4 col-md-4 col-md-offset-4">
+          <div class="todo">
+            <ul>
+              <li ng-class="{'todo-done':class.selected,}" ng-repeat="class in classList" ng-click="select(class)">
+                <div class="todo-content ">
+                  <h4 class="todo-name">
+                    {{class.title}}
+                  </h4>
+                  有{{class.num}}篇文章
+                </div>
+              </li>
+            </ul>
+          </div><!-- /.todo -->
+        </div><!-- /.col-xs-4 -->
+        </div>
+        <div class="col-md-2 col-md-offset-5">
+        	<button class="btn btn-lg btn-primary btn-block" ng-click="submitClass()">投稿</button>
+        </div>
+</div>

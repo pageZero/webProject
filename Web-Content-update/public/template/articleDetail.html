@@ -1,0 +1,116 @@
+﻿<style type="text/css">
+.content {
+    margin-top: 40px;
+}
+
+.arl-title-author > a {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.author-info img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.img-usericon {
+	width: 40px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.author-info .author {
+    background: none;
+    border: 1px solid #e78170;
+    color: #e78170;
+    text-shadow: none;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 1;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-weight: 600;
+    margin: 0px 10px;
+}
+
+.aticle-content {
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.arl-title-author .user-name {
+    font-size: 14px;
+    color: #075b8d;
+    text-decoration: none;
+}
+
+.arl-title-author div {
+    font-size: 14px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: #7D7C7C;
+}
+
+.arl-title .arl-title-author .author {
+    background: none;
+    border: 1px solid #e78170;
+    color: #e78170;
+    text-shadow: none;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 1;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-weight: 600;
+    margin: 0px 10px;
+}
+
+.arl-title .arl-title-info {}
+
+.comment {
+    border-top: 1px solid #ECECEC;
+}
+
+#collect {
+    cursor: pointer;
+}
+</style>
+<div class="content col-md-10 col-md-offset-1">
+    <div class="row page-header">
+        <div class="col-md-10 author-info">
+            <a class="col-md-1" href="" ng-click=""><img src="../images/icon.jpg" /></a>
+            <div class="col-md-11">
+                <span class="author">作者</span><a href="" ng-click="queryAuthorInfo(article.user.userId)">{{article.user.username}}</a>&nbsp;粉丝:<strong>	{{article.user.fans}}100</strong>
+                <div>
+                    <span class="palette-paragraph">发布时间：<strong>{{article.creatTime}}</strong></span>
+                    <span class="palette-paragraph">&nbsp;&nbsp;最后更新时间:<strong>{{article.updateTime}}</strong></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary btn-sm" href="" ng-click="setFocusState()">
+                <span class="fui-plus">  </span><span ng-show="!focusState" >关注</span>
+                <span ng-show="focusState">取消关注</span>
+            </a>
+        </div>
+    </div>
+    <div class="arl-title-info">
+        <h4 class="text-center">{{article.title}}Angular教程</h4>
+        <small class="palette-paragraph" ng-model="article.commentnum">浏览：{{article.looknum}}</small>
+        <small class="palette-paragraph" ng-model="article.commentnum">收藏：{{article.collectnum}}</small>
+        <small class="palette-paragraph" ng-model="article.commentnum">评论：{{article.commentnum}}</small>
+    </div>
+    <section class="aticle-content">
+    </section>
+    <div class="row page-header">
+        <div class="col-md-2 col-md-offset-10">
+            <a class="btn btn-primary" ng-class="{'active':collectState,}" href="" ng-model="collectState" ng-click="setCollecteState()"><span class="fui-heart"></span><span ng-show="!collectState">&nbsp;&nbsp;收藏</span><span ng-show="collectState">&nbsp;&nbsp;取消收藏</span></a></div>
+    </div>
+    <comment></comment>
+</div>

@@ -1,0 +1,35 @@
+﻿<div class="login register ">
+	<div class="login-screen">
+        <div class="login-icon">
+            <img src="../images/login-icon.png" alt="欢迎来到博客管理系统" />
+            <h4><br><small>博客管理系统</small></h4>
+        </div>
+        <form novalidate name="loginForm" ng-submit="user.registerCheck()">
+            <div class="login-form">  
+                <div class="form-group" >
+                    <input type="email" name="id"" ng-model="user.id" class="form-control login-field" id="login-id" required placeholder="邮箱">
+                    <label class="login-field-icon fui-user" for="login-id"></label>
+                    <span class="errorMessage" ng-show="loginForm.id.$dirty && loginForm.id.$invalid">无效的邮箱格式！</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" ng-model="user.password" class="form-control login-field" id="login-password" ng-minlength="6" ng-maxlength="12" required placeholder="密码">
+                    <label class="login-field-icon fui-lock" for="password"></label>
+                    <span class="errorMessage" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">6-12位密码！</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password-again" ng-model="user.passwordagain" class="form-control login-field" id="password-again" ng-minlength="6" ng-maxlength="12" required placeholder="确认密码">
+                    <label class="login-field-icon fui-lock" for="password-again"></label>
+                    <span class="errorMessage" ng-show="user.passwordCheck()">两次输入的密码不一样！</span>
+                </div>
+                <div class="form-group" >
+                    <input type="username" name="username"" ng-model="user.username" class="form-control login-field" id="login-username" required placeholder="可爱又迷人的昵称">
+                    <label class="login-field-icon fui-user" for="login-username"></label>
+
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.password.$invalid || loginForm.id.$invalid">注册</button>
+
+            </div>
+        </form>
+        
+    </div>
+</div>

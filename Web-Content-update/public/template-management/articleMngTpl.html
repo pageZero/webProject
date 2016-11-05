@@ -1,0 +1,36 @@
+﻿<div class="article">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2 class="page-header text-center" ">文章管理</h2>
+        <div class="table-responsive ">
+            <table class="table ">
+            	<thead>
+     				<tr>
+		            	<th >文章</th>
+		            	<th>用户操作</th>
+		            	<th>操作时间</th>
+		            	<th>处理</th>
+            		</tr>
+   				</thead>
+            	<tbody>
+            		<tr ng-repeat="article in articleList">
+	                    <td>&nbsp;<a ng-click="queryArticle(article)">{{article.title}}</a></td>
+	                    <td>&nbsp;申请加入<a ng-click="queryClass(article)">{{article.content}}</a></td>
+	                    <td>&nbsp;{{article.creatTime}}</td>
+	                    <td>
+                        <div class="btn-group btn-group-xs ">
+                          <button type="button " class="btn btn-default " ng-click="delete(article) ">删除</button>
+                          <button type="button " class="btn btn-warning " ng-click="setState(article)" >通过审核</button>
+                          <button type="button " class="btn btn-danger " ng-click="reject(article)">拒绝发布</button>
+                        </div>
+                        </td>
+                	</tr>
+            	</tbody>
+                
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+</div>

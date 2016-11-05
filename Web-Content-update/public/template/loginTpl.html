@@ -1,0 +1,26 @@
+﻿<div class="login">
+    <div class="login-screen">
+        <div class="login-icon">
+            <img src="../images/login-icon.png" alt="欢迎来到博客管理系统" />
+            <h4><br><small>博客管理系统</small></h4>
+        </div>
+        <form novalidate name="loginForm" ng-submit="user.loginCheck()">
+            <div class="login-form">
+
+            
+                <div class="form-group" >
+                    <input type="email" name="id"" ng-model="user.id" class="form-control login-field" id="login-id" required placeholder="Email">
+                    <label class="login-field-icon fui-user" for="login-id"></label>
+                    <span class="errorMessage" ng-show="loginForm.id.$dirty && loginForm.id.$invalid">无效的邮箱格式！</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" ng-model="user.password" class="form-control login-field" id="login-password" ng-minlength="6" ng-maxlength="12" required placeholder="Password">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    <span class="errorMessage" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">6-12位密码！</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.password.$invalid || loginForm.id.$invalid">登录</button>
+            </div>
+        </form>
+        
+    </div>
+</div>

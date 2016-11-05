@@ -1,0 +1,58 @@
+﻿<nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#/index">Flat UI</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#fakelink">Menu Item<span class="navbar-unread">1</span></a></li>
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">首页<b class="caret"></b></a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="#/sortHot">热门</a></li>
+                    <li><a href="#/sortTime">最新</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">分类<b class="caret"></b></a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="" ng-repeat="clazz in classList" ng-click="toClassInfo(clazz)">{{clazz.title}}</a></li>
+                </ul>
+            </li>
+            <!-- <li><a href="#fakelink">分类</a></li> -->
+            <li><a href="" ng-click="toTimeline()">朋友圈</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" ng-controller="searchController" ng-submit="search.submit()" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control"  ng-model="search.word" name="word" id="navbarInput-01" type="search" placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                     </span>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right" style="padding-right:50px">
+            <li><a href="#/writeDown">写文章<span class="fui-new" style="padding-left:10px"></span></a></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <img ng-model="icon" src="../images/icon.jpg" class="img-circle user-logo" width="28px" height="28px"> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/login" ng-show="!isLogin">登录</a></li>
+                    <li><a href="#/loginout" ng-show="isLogin" ng-click="">退出登录</a></li>
+                    <li><a href="#/register">注册</a></li>
+                    <li><a href="#/setting">设置</a></li>
+                    <!-- <li><a href="#/loginout">注销</a></li> -->
+                    <!-- <li><a href="../ArticleClass/indexManagement">后台管理</a></li> -->
+              </ul>
+            </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+

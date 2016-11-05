@@ -1,0 +1,21 @@
+<div class="col-md-8 col-md-offset-4">
+    <div class="row page-header" ng-repeat="article in articleList" style="margin-top:10px; margin-bottom:10px">
+        <!--点击整行进入文章详情页-->
+        <div class="col-sm-12 col-md-12 ">
+            <div class="col-md-10">
+                <!--点击作者，进入作者主页-->
+                <p class="palette-headline">
+                    <a href="" ng-model="article.username" ng-click="queryAuthorInfo(article.userId)">{{article.username}}</a>
+                    <small ng-model="article.publishTime"> · {{article.publishTime}}</small>
+                </p>
+                <h6 ng-click="queryArticleInfo(article.articleId)" href="#/articleDetail">{{article.title}}</h6>
+                <small class="palette-paragraph" ng-model="article.lookNum">阅读：{{article.looknum}} · </small>
+                <small class="palette-paragraph" ng-model="article.commentnum">评论：{{article.commentnum}} · </small>
+                <small class="palette-paragraph" ng-model="article.collections">收藏：{{article.collections}}</small>
+            </div>
+            <div class="col-md-2">
+                <img src="../images/img1.jpg" class="img-rounded" width="110px" height="110px">
+            </div>
+        </div>
+    </div>
+</div>

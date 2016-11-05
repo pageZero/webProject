@@ -1,0 +1,206 @@
+﻿<style type="text/css">
+#addType:before {
+    border-top: 0px solid transparent;
+    border-left: 115px solid transparent;
+    border-bottom: 28px solid rgba(234, 231, 231, 0.95);
+    border-right: 105px solid transparent;
+    content: '';
+    border-radius: 0px 0px 0px 0px;
+    position: absolute;
+    top: -28px;
+    left: 0px;
+}
+
+#addType {
+    width: 220px;
+    height: 150px;
+    text-align: center;
+    background-color: rgba(234, 231, 231, 0.95);
+    border-radius: 0px 0px 5px 5px;
+    display: block;
+    position: absolute;
+    box-shadow: -2px 4px 8px;
+    z-index: 999;
+    display: none;
+}
+
+#addType h6 {
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.62);
+    text-shadow: 0px 2px 5px;
+}
+
+#addType input {
+    width: 80%;
+    padding-left: 5%;
+}
+
+#addType button {
+    border: none;
+    padding: 5px 20px;
+    margin: 15px 10px;
+    border-radius: 2px;
+    font-weight: 800;
+    color: #fff;
+}
+</style>
+<div id="layout" class="col-sm-12 col-md-12">
+    <header style="text-align:center;">
+        <h2 >写文章</h2>
+        <p>“写你所想，记你所忆”</p>
+    </header>
+    <select id="showBox" class="form-control select select-primary select-block mbl" style="width: 116px; height: 43px;    background-color: #8F928D; color: #E4DEDE; font-size: 19px;font-weight: bold;">
+        <option value="-1">新建分类</option>
+    </select>
+    <div id="addType">
+        <h6>新建分类</h6>
+        <input id="typeName" type="text" placeholder="新建分类名称" />
+        <div>
+            <button style="background-color: rgba(230, 0, 0, 0.87);" type="button" onClick="saveType() ">确定</button>
+            <button style="background-color: rgba(40, 195, 59, 0.87);" type="button" onClick="cancel()">取消</button>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-md-12">
+            <div class="input-group">
+                <span class="input-group-addon">文章标题</span>
+                <input type="text" class="form-control" placeholder="标题" required ng-model="article.title">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="editormd" id="test-editormd">
+            <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+            <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+            <textarea class="editormd-html-textarea" name="text"></textarea>
+        </div>
+    </div>
+    <ul class="dropdown-menu dropdown-menu-inverse" role="menu"></ul>
+    <div style="text-align:center;">
+        <button class="btn btn-lg btn-primary" style="margin: 10px;" type="button" onClick="saveArticl()">保存</button>
+        <button class="btn btn-lg btn-success" style="margin: 10px;" type="button" ng-click="submitArticl()">发布文章</button>
+        <button class="btn btn-lg btn-danger" style="margin: 10px;" type="button" onClick="cancleSubmit()">取消</button>
+    </div>
+</div>
+<script type="text/javascript">
+var testEditor;
+
+$(function() {
+    testEditor = editormd("test-editormd", {
+        width: "100%",
+        height: 640,
+        syncScrolling: "single",
+        saveHTMLToTextarea: true, //设置可保存为html 获取的时候testEditor.getHtml();就可以了
+        /*theme : "dark",*/ //设置主题，有默认
+        /*previewTheme : "dark",*/
+        /*editorTheme : "pastel-on-dark",*/
+        searchReplace: true,
+        emoji: true,
+        taskList: true,
+        tocm: true, // Using [TOCM]
+        tex: true, // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true, // 开启流程图支持，默认关闭
+        sequenceDiagram: true, // 开启时序/序列图支持，默认关闭,
+        dialogLockScreen: false, // 设置弹出层对话框不锁屏，全局通用，默认为true
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "./php/upload.php",
+        path: "../editormd/lib/"
+            /* imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/uploadfile",*/
+            /*  saveHTMLToTextarea : true */
+
+    });
+
+    $.ajax({
+        url: 'userIndex',
+        type: 'post',
+        data: '',
+        success: function(data) {
+            var json = eval('(' + data + ')');
+            for (var i = 0; i <= json.length - 1; i++) {
+                $('#showBox').prepend('<option value="' + json[i].classId + '">' + json[i].title + '</option>');
+            }
+            $('#showBox option:first').attr('selected', 'selected');
+        },
+    });
+
+});
+
+/*
+function submitArticl() {
+	window.location.href = "#/selectClass";
+    var html = testEditor.getHTML();
+
+    $.ajax({
+        url: 'createArticle',
+        type: 'post',
+        data: 'content=' + html,
+        success: function(data) {
+
+            // 发布成功事件处理
+            window.location.href = 'index#/index';
+
+            alert('发布成功！！');
+        },
+    });
+
+}
+*/
+function saveArticl() {
+	var html = testEditor.getHTML();
+
+    $.ajax({
+        url: 'createArticle',
+        type: 'post',
+        data: 'content=' + html,
+        success: function(data) {
+
+            alert('保存成功！！');
+        },
+    });
+}
+
+function cancleSubmit() {
+    window.location.href = 'index#/index';
+}
+var typeBox = $('#addType')[0];
+
+var showBox = $('#showBox')[0];
+
+
+
+showBox.addEventListener('change', function() {
+    if (this.value == -1) {
+        typeBox.style.left = (this.offsetLeft + this.offsetWidth / 2) + 'px';
+        typeBox.style.top = (this.offsetTop + this.offsetHeight + 28) + 'px';
+        typeBox.style.display = 'block';
+    }
+
+}, false);
+
+function saveType() {
+    $.ajax({
+        url: 'addUserClass',
+        type: 'post',
+        data: 'typeName=' + $("#typeName").val(),
+        success: function(data) {
+
+            // 添加成功
+            alert('添加成功');
+            // 将选择框值变为新增的类型值
+
+            showBox.value = data.name;
+            typeBox.style.display = 'none';
+            window.location.reload();
+        },
+    });
+}
+
+function cancel() {
+    typeBox.style.display = 'none';
+}
+</script>
